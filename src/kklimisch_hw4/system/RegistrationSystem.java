@@ -12,6 +12,11 @@ import exception.DuplicatePersonException;
 import exception.DuplicateSubjectException;
 import exception.PersonNotFoundException;
 import exception.DuplicateSectionException;
+import person.Student;
+import person.Faculty;
+import registration.Course;
+import registration.Section;
+import java.util.*;
 
 /**
  * <p>The <strong>RegistrationSystem</strong> class stores information about the school, 
@@ -20,12 +25,17 @@ import exception.DuplicateSectionException;
  * @author ohsh
  */
 public class RegistrationSystem {
-    
+    private ArrayList<Student> students;
+    private ArrayList<Faculty> faculty;
+
+
     /**
-     * 
+     * Constructor for RegistrationSystem.
      */
     public RegistrationSystem() { 
-        
+        ArrayList<Student> students = new ArrayList<>();
+
+
         // TODO: implement RegistrationSystem constructor
     
     }
@@ -46,6 +56,14 @@ public class RegistrationSystem {
                             Quarter quarter, int year) 
                             throws DuplicatePersonException {
         
+        // Create student object
+        Student student = new Student(firstName, lastName);
+
+
+        // Check if student is already in the list
+
+        // Add to list
+
         // TODO: implement addStudent method
     
     }

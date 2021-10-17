@@ -24,7 +24,7 @@ package person;
  * 
  * @author 
  */
-public class Faculty {
+public class Faculty extends Person{
 
     /**
      * 
@@ -32,8 +32,8 @@ public class Faculty {
      * @param lastName    The last name of the faculty
      */
     public Faculty(String firstName, String lastName) {
-        
         // TODO: implement Faculty constructor
+        super(firstName, lastName);
     
     }
     

@@ -1,5 +1,8 @@
 package person;
 
+import enums.*;
+
+
 /**
  * <p>The <strong>Student</strong> class holds information about a student.</p>
  * <ul>
@@ -50,30 +53,93 @@ package person;
  * 
  * @author 
  */
-public class Student {
+public class Student extends Person {
+
+    // The following fields are included in the Person superclass:
+    // -first name
+    // - last name
+    // - SUID
+
+    private String email;
+    private Quarter quarter;
+    private PersonStatus status;
+    private StudentType type;
+    private StudentProgram program;
+    private StudentYear studentYear; // Can I just not initialize this if the StudentType is Graduate?
+    private String startTerm;
+    private String facultyAdvisor;
+
 
     /**
-     * 
+     * Constructor for Student object.
      * @param firstName   The first name of the student
      * @param lastName    The last name of the student
      */
     public Student(String firstName, String lastName) {
-        
+
         // TODO: implement Student constructor
-    
+        super(firstName, lastName);
+        email = firstName.toLowerCase() + lastName.toLowerCase() + "@seattleu.edu";
+      //  this.type = type;
+       // this.program = program;
+       // startTerm = quarter + " " + year;
+
+        // Only initialize the student year field for undergraduate students.
+       // if (type == StudentType.UNDERGRAD) {
+       //     this.studentYear = assignStudentYear(year);
+       // }
+
+        // Need to implement this method
+       // facultyAdvisor = assignAdvisor();
     }
 
-    
-    // TODO: add Student fields
-    // - first name
-    // - last name
-    // - SUID
-    // - status (see PersonStatus)
-    // - student type (see StudentType)
-    // - student program (see StudentProgram)
-    // - student year (see StudentYear; only if undergrad––default to freshman)
-    // - start term (see Quarter)
-    // - faculty advisor
-    // - email
+ //   public setStudentType(StudentType type) {}
+
+    /**
+     * Assigns undergraduate students a descriptive student year
+     * from one of the defined options in the Student Year enumerator,
+     * which are as follows: freshman, sophomore, junior, or senior.
+     *
+     * @param year
+     * @return the descriptive student year
+     */
+    public StudentYear setStudentYear(int year) {
+        // Note: I hardcoded in the translation of year
+        // to start term to match the Sample Output.
+        // If time allows, I will improve this by
+        // determining the student year by computing
+        // Now - Start Term.
+        if (year == 2016) {
+            return StudentYear.SENIOR;
+        }
+        else if (year == 2017) {
+            return StudentYear.JUNIOR;
+        }
+        else if (year == 2018) {
+            return StudentYear.SOPHOMORE;
+        }
+        else {
+            return StudentYear.FRESHMAN;
+        }
+    }
+
+    public String assignAdvisor() {
+        // Iterate through number of faculty on faculty list to get length
+        // Assign random number between 0 and at length
+        // get faculty member name
+        return "hello";
+    }
+
+    /**
+     * Method to return a String representation of all field in the Person object.
+     * String representation uses the format shown in the Sample Output for the
+     * Student List in the registration system.
+     * @return
+     */
+    public String toString() {
+
+        String completePersonString = "Student: " + "Name=" + super.getFullName() + ", " +
+                "SUID=" + super.getSuid() + ", " + "Email= " + email;
+    }
 
 }
