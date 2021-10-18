@@ -5,6 +5,7 @@ import enums.StudentProgram;
 import enums.StudentType;
 import enums.StudentYear;
 import java.util.Calendar;
+import java.util.ArrayList;
 
 
 /**
@@ -82,6 +83,14 @@ public class Student extends Person {
 
         // TODO: implement Student constructor
         super(firstName, lastName);
+    }
+
+    /**
+     * Set method for student's email.
+     * @param firstName   The first name of the student.
+     * @param lastName    The last name of the student.
+     */
+    public void setEmail(String firstName, String lastName) {
         email = firstName.toLowerCase() + lastName.toLowerCase() + "@seattleu.edu";
     }
 
@@ -103,7 +112,7 @@ public class Student extends Person {
 
     /**
      * Get method for the student's Student Type.
-     * @return the student's type.
+     * @return the student's Student Type.
      */
     public StudentType getStudentType() {
         return studentType;
@@ -131,7 +140,20 @@ public class Student extends Person {
      * from one of the defined options in the Student Year enumerator,
      * which are as follows: freshman, sophomore, junior, or senior.
      *
-     * If time allows, I want to explore
+     * If time allows, I want to explore the other options for initializing
+     * this field - the RegistrationSystem currently only calls the
+     * setStudentYear method for undergraduate students, leaving
+     * this field uninitialized for graduate students. I'd consider making
+     * a separate undergraduate class that inherits from the Student class
+     * and just has the student year field and methods, but I'd have to
+     * explore how that affects my addStudent and printStudentList methods
+     * in the Registration System class (they may actually be fine though,
+     * given Liskov's Substitution Principle, but I'd have to look into it).
+     *
+     * Also if time allows, I'd like to explore incorporating the entire
+     * start term (quarter and year) into the computation of the number of
+     * years an undergraduate student has been in school. The current computation
+     * just uses the start year.
      *
      * @param year - the year in which the student started their current
      *             program
@@ -180,9 +202,12 @@ public class Student extends Person {
     }
 
     /**
-     * Set method for the student's faculty advisor.
+     * Accepts a list of active faculty members and randomly assigns
+     * the student an advisor from the list.
+     *
+     * @param faculty an ArrayList of active faculty members
      */
-    public void setFacultyAdvisor() {
+    public void setFacultyAdvisor(ArrayList<Faculty> faculty) {
         facultyAdvisor = "hello";
     }
 

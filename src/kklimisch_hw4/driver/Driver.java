@@ -25,7 +25,6 @@ import exception.SectionNotFoundException;
 public class Driver {
 
     public static void main(String[] args) {
-        System.out.println("Hello world");
         RegistrationSystem system = new RegistrationSystem();
         populateSystem(system);    
         
@@ -38,7 +37,7 @@ public class Driver {
     
     private static void populateSystem(RegistrationSystem system) {
         try {
-           // populateFaculty(system);
+            populateFaculty(system);
             populateStudents(system);
             /*
             populateSubjects(system);
@@ -84,7 +83,7 @@ public class Driver {
         system.addStudent("Katherine", "Johnson", StudentType.GRAD, StudentProgram.MSCS, Quarter.FQ, 2018);
     }
 
-    /*
+
     private static void populateFaculty(RegistrationSystem system) throws DuplicatePersonException {
         system.addFaculty("Adair", "Dingle", FacultyType.PROF, Building.ENGR, 531, "dingle@seattleu.edu");
         system.addFaculty("Steven", "Hanks", FacultyType.LECTURE, Building.ENGR, 511, "hankssteven@seattleu.edu");
@@ -104,7 +103,7 @@ public class Driver {
         system.addFaculty("Jason", "Wong", FacultyType.INSTRUCT, Building.ENGR, 526, "wongja@seattleu.edu");
         system.addFaculty("Yingwu", "Zhu", FacultyType.ASSOCPROF, Building.ENGR, 530, "zhuy@seattleu.edu");        
     }
-
+/*
     private static void populateSubjects(RegistrationSystem system) throws DuplicateSubjectException {
         system.addSubject(SubjectCode.BIOL, "Biology");
         system.addSubject(SubjectCode.CHEM, "Chemistry");
@@ -191,8 +190,18 @@ public class Driver {
 
 
      */
+
+    /**
+     * Method to print the contents of all Registration System collections.
+     * @param system
+     */
     private static void printSystem(RegistrationSystem system) {
+        System.out.println("-- FACULTY LIST --");
+        system.printFacultyList();
+        System.out.println("\n-- STUDENT LIST --");
         system.printStudentList();
+
+
         // TODO: implement printSystem method
     }
 

@@ -18,7 +18,7 @@ public class Person {
     /**
      * Constructor for the Person class. Accepts the first name
      * and last name of the person as input parameters and then
-     * assigns the person their SUID.
+     * assigns the person their SUID and a person status of "Active."
      * @param firstName
      * @param lastName
      */
@@ -27,14 +27,23 @@ public class Person {
         this.lastName = lastName;
         suid = instanceCounter;
         instanceCounter++;
+        status = PersonStatus.ACTIVE;
     }
 
     /**
-     * get method for the person's full name.
-     * @return the person's full name in String format.
+     * Get method for the person's first name.
+     * @return the person's first name.
      */
-    public String getFullName(){
-        return firstName + " " + lastName;
+    public String getFirstName() {
+        return firstName;
+    }
+
+    /**
+     * Get method for the person's last name.
+     * @return the person's last name.
+     */
+    public String getLastName() {
+        return lastName;
     }
 
     /**
@@ -45,13 +54,6 @@ public class Person {
         return suid;
     }
 
-    /**
-     * Set method for the person's Person Status.
-     * @param status
-     */
-    public void setStatus (PersonStatus status) {
-        this.status = status;
-    }
 
     /**
      * get method for the person's Person Status.

@@ -36,25 +36,65 @@ public class Faculty extends Person{
     // - status
 
     private FacultyType facultyType;
+    private String office;
+    private String email;
 
     /**
-     * 
+     * Constructor for faculty.
      * @param firstName   The first name of the faculty
      * @param lastName    The last name of the faculty
      */
     public Faculty(String firstName, String lastName) {
-        // TODO: implement Faculty constructor
         super(firstName, lastName);
-    
+
     }
-    
-    
-    // TODO: add Faculty fields
-    // - first name
-    // - last name
-    // - SUID
-    // - status (see PersonStatus)
-    // - faculty type (see FacultyType)
-    // - office (see Building)
-    // - email
+
+    /**
+     * Set method for faculty's email.
+     * @param email   The email address
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
+     * Get method for faculty's email.
+     * @return the faculty's email address.
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * Set method for the faculty's Faculty Type.
+     * @param type - one of the defined options in the Faculty Type enumerator.
+     */
+    public void setFacultyType(FacultyType type){
+         this.facultyType = type;
+    }
+
+    /**
+     * Get method for faculty's Faculty Type.
+     * @return the faculty's Faculty Type.
+     */
+    public FacultyType getFacultyType() {
+        return facultyType;
+    }
+
+    /**
+     * Set method for the faculty's office.
+     * @param bldg - one of the defined buildings in the Building enumerator.
+     * @param room - the room number
+     */
+    public void setOffice(Building bldg, int room) {
+        office = bldg + " " + room;
+    }
+
+    /**
+     * Get method for the faculty's office.
+     * @return the building and room number of the office
+     */
+    public String getOffice() {
+        return office;
+    }
 }

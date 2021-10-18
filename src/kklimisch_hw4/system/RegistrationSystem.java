@@ -25,15 +25,16 @@ import java.util.*;
  * @author ohsh
  */
 public class RegistrationSystem {
-    private ArrayList<Student> students;
-    private ArrayList<Faculty> faculty;
+    private ArrayList<Student> studentList;
+    private ArrayList<Faculty> facultyList;
 
 
     /**
      * Constructor for RegistrationSystem.
      */
     public RegistrationSystem() { 
-        students = new ArrayList<>();
+        studentList = new ArrayList<>();
+        facultyList = new ArrayList<>();
 
 
         // TODO: implement RegistrationSystem constructor
@@ -55,15 +56,29 @@ public class RegistrationSystem {
                             StudentType type, StudentProgram program,
                             Quarter quarter, int year) 
                             throws DuplicatePersonException {
-        
-        // Create student object and initialize all fields.
-        Student student = new Student(firstName, lastName);
-        student.setStudentType(type);
-        student.setProgram(program);
-        student.setStartTerm(quarter, year);
-        student.setFacultyAdvisor();
+
+
+        // Create student object.
+        Student currStudent = new Student(firstName, lastName);
+
+        // Check if student is already on the list. If they are,
+        // throw a duplicate person exception.
+        // Assumption: A student with the same first name and last name is a duplicate student.
+        for (int i = 0; i < studentList.size(); i++)
+            if ( (firstName == studentList.get(i).getFirstName() ) &&
+                    (lastName == studentList.get(i).getLastName() ) ) {
+                throw new DuplicatePersonException();
+            }
+
+        // After verifying that the student isn't already on the list,
+        // initialize remaining student object fields.
+        currStudent.setEmail(firstName, lastName);
+        currStudent.setStudentType(type);
+        currStudent.setProgram(program);
+        currStudent.setStartTerm(quarter, year);
+        currStudent.setFacultyAdvisor(facultyList);
         if (type == StudentType.UNDERGRAD) {
-            student.setStudentYear(year);
+            currStudent.setStudentYear(year);
 
             // the Student Year field is never initialized for
             // graduate students, meaning the field is left null.
@@ -72,15 +87,8 @@ public class RegistrationSystem {
             // null could cause issues.
         }
 
-        // NEED to write code to check if there is a duplicate person on the list
-        // This is just stand in code for testing
-        if (year == 2020){
-            throw new DuplicatePersonException();
-        }
-
-        // Add student to list
         //Add student to the students list
-        students.add(student);
+        studentList.add(currStudent);
     }
     
     /**
@@ -96,10 +104,29 @@ public class RegistrationSystem {
      */
     public void addFaculty(String firstName, String lastName,
                             FacultyType type, Building bldg, int room, String email) 
-                            throws DuplicatePersonException {    
-        
-        // TODO: implement addFaculty method
-    
+                            throws DuplicatePersonException {
+
+        Faculty member = new Faculty(firstName, lastName);
+
+        // Check if faculty member is already on the list. If they are,
+        // throw a duplicate person exception.
+        // Assumption: A faculty member with the same first name and last name
+        // is a duplicate faculty member.
+        for (int i = 0; i < facultyList.size(); i++) {
+            if ((firstName == facultyList.get(i).getFirstName()) &&
+                    (lastName == facultyList.get(i).getLastName())) {
+                throw new DuplicatePersonException();
+            }
+        }
+
+        // After verifying that the faculty member isn't already on the list,
+        // initialize remaining faculty object fields.
+        member.setFacultyType(type);
+        member.setOffice(bldg, room);
+        member.setEmail(email);
+
+        // Add faculty member to list of faculty.
+        facultyList.add(member);
     }
     
     /**
@@ -182,26 +209,48 @@ public class RegistrationSystem {
     }
 
     /**
+     * Method to print the information for every Faculty object in
+     * the facultyList array list.
+     */
+    public void printFacultyList() {
+        for (int i = 0; i < facultyList.size(); i++) {
+            Faculty f = facultyList.get(i);
+            String printFaculty = "Faculty: Name=" + f.getFirstName() + " " +
+                    f.getLastName() + ", " +
+                    "SUID=" + f.getSuid() + ", " +
+                    "Email=" + f.getEmail() + ", " +
+                    "Status=" + f.getStatus() + ", " +
+                    "Type=" + f.getFacultyType() + ", " +
+                    "Office=" + f.getOffice();
+            System.out.println(printFaculty);
+        }
+    }
+
+
+    /**
      * Method to print the information for every Student object in
-     * the students array list.
+     * the studentList array list.
      */
     public void printStudentList() {
-        for (int i = 0; i < students.size(); i++) {
-            Student listStudent = students.get(i);
-            String printStudent = "Student: Name= " + listStudent.getFullName() + ", " +
-                                  "SUID= " + listStudent.getSuid() + ", " +
-                                  "Email= " + listStudent.getEmail() + ", " +
-                                  "Status= " + listStudent.getStatus() + ", " +
-                                  "Type= " + listStudent.getStudentType() + ", " +
-                                  "Program = " + listStudent.getProgram() + ", " +
-                                  "Term= " + listStudent.getStartTerm() + ", " +
-                                  "Advisor= " + listStudent.getFacultyAdvisor();
-            if (listStudent.getStudentType() == StudentType.UNDERGRAD ) {
-                printStudent += ", Year=" + listStudent.getStudentYear();
+        for (int i = 0; i < studentList.size(); i++) {
+            Student s = studentList.get(i);
+            String printStudent = "Student: Name=" + s.getFirstName() + " " +
+                                  s.getLastName() + ", " +
+                                  "SUID=" + s.getSuid() + ", " +
+                                  "Email=" + s.getEmail() + ", " +
+                                  "Status=" + s.getStatus() + ", " +
+                                  "Type=" + s.getStudentType() + ", " +
+                                  "Program=" + s.getProgram() + ", " +
+                                  "Term=" + s.getStartTerm() + ", " +
+                                  "Advisor=" + s.getFacultyAdvisor();
+            if (s.getStudentType() == StudentType.UNDERGRAD ) {
+                printStudent += ", Year=" + s.getStudentYear();
             }
             System.out.println(printStudent);
         }
     }
+
+
 
 
     
