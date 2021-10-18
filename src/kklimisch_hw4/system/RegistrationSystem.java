@@ -33,7 +33,7 @@ public class RegistrationSystem {
      * Constructor for RegistrationSystem.
      */
     public RegistrationSystem() { 
-        ArrayList<Student> students = new ArrayList<>();
+        students = new ArrayList<>();
 
 
         // TODO: implement RegistrationSystem constructor
@@ -56,16 +56,31 @@ public class RegistrationSystem {
                             Quarter quarter, int year) 
                             throws DuplicatePersonException {
         
-        // Create student object
+        // Create student object and initialize all fields.
         Student student = new Student(firstName, lastName);
+        student.setStudentType(type);
+        student.setProgram(program);
+        student.setStartTerm(quarter, year);
+        student.setFacultyAdvisor();
+        if (type == StudentType.UNDERGRAD) {
+            student.setStudentYear(year);
 
+            // the Student Year field is never initialized for
+            // graduate students, meaning the field is left null.
+            // If time allows, I'd like to determine a better
+            // way of handling this, because leaving the field
+            // null could cause issues.
+        }
 
-        // Check if student is already in the list
+        // NEED to write code to check if there is a duplicate person on the list
+        // This is just stand in code for testing
+        if (year == 2020){
+            throw new DuplicatePersonException();
+        }
 
-        // Add to list
-
-        // TODO: implement addStudent method
-    
+        // Add student to list
+        //Add student to the students list
+        students.add(student);
     }
     
     /**
@@ -165,6 +180,30 @@ public class RegistrationSystem {
         // TODO: implement addSection method
     
     }
+
+    /**
+     * Method to print the information for every Student object in
+     * the students array list.
+     */
+    public void printStudentList() {
+        for (int i = 0; i < students.size(); i++) {
+            Student listStudent = students.get(i);
+            String printStudent = "Student: Name= " + listStudent.getFullName() + ", " +
+                                  "SUID= " + listStudent.getSuid() + ", " +
+                                  "Email= " + listStudent.getEmail() + ", " +
+                                  "Status= " + listStudent.getStatus() + ", " +
+                                  "Type= " + listStudent.getStudentType() + ", " +
+                                  "Program = " + listStudent.getProgram() + ", " +
+                                  "Term= " + listStudent.getStartTerm() + ", " +
+                                  "Advisor= " + listStudent.getFacultyAdvisor();
+            if (listStudent.getStudentType() == StudentType.UNDERGRAD ) {
+                printStudent += ", Year=" + listStudent.getStudentYear();
+            }
+            System.out.println(printStudent);
+        }
+    }
+
+
     
     
     // TODO: add RegistrationSystem collections
@@ -176,5 +215,7 @@ public class RegistrationSystem {
     // 
     // Note -- there is no list for prerequisites - these should be included 
     // as part of the course list
+
+
     
 }

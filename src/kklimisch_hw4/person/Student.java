@@ -1,6 +1,10 @@
 package person;
 
-import enums.*;
+import enums.Quarter;
+import enums.StudentProgram;
+import enums.StudentType;
+import enums.StudentYear;
+import java.util.Calendar;
 
 
 /**
@@ -59,13 +63,12 @@ public class Student extends Person {
     // -first name
     // - last name
     // - SUID
+    // - status
 
     private String email;
-    private Quarter quarter;
-    private PersonStatus status;
-    private StudentType type;
+    private StudentType studentType;
     private StudentProgram program;
-    private StudentYear studentYear; // Can I just not initialize this if the StudentType is Graduate?
+    private StudentYear studentYear;
     private String startTerm;
     private String facultyAdvisor;
 
@@ -80,66 +83,114 @@ public class Student extends Person {
         // TODO: implement Student constructor
         super(firstName, lastName);
         email = firstName.toLowerCase() + lastName.toLowerCase() + "@seattleu.edu";
-      //  this.type = type;
-       // this.program = program;
-       // startTerm = quarter + " " + year;
-
-        // Only initialize the student year field for undergraduate students.
-       // if (type == StudentType.UNDERGRAD) {
-       //     this.studentYear = assignStudentYear(year);
-       // }
-
-        // Need to implement this method
-       // facultyAdvisor = assignAdvisor();
     }
 
- //   public setStudentType(StudentType type) {}
+    /**
+     * Get method for student's email.
+     * @return the student's email address.
+     */
+    public String getEmail() {
+        return email;
+    }
 
     /**
-     * Assigns undergraduate students a descriptive student year
+     * Set method for the student's Student Type.
+     * @param studentType - one of the defined options in the Student Type enumerator.
+     */
+    public void setStudentType(StudentType studentType) {
+        this.studentType = studentType;
+    }
+
+    /**
+     * Get method for the student's Student Type.
+     * @return the student's type.
+     */
+    public StudentType getStudentType() {
+        return studentType;
+    }
+
+    /**
+     * Set method for the student's program.
+     * @param program - one of the defined options in the Student Program enumerator.
+     */
+    public void setProgram (StudentProgram program) {
+        this.program = program;
+    }
+
+    /**
+     * Get method for the student's program.
+     * @return the student's program.
+     */
+    public StudentProgram getProgram() {
+        return program;
+    }
+
+    /**
+     * Computes the number of years an undergraduate student has been in school
+     * and uses it to assign the student a descriptive student year
      * from one of the defined options in the Student Year enumerator,
      * which are as follows: freshman, sophomore, junior, or senior.
      *
-     * @param year
+     * If time allows, I want to explore
+     *
+     * @param year - the year in which the student started their current
+     *             program
      * @return the descriptive student year
      */
-    public StudentYear setStudentYear(int year) {
-        // Note: I hardcoded in the translation of year
-        // to start term to match the Sample Output.
-        // If time allows, I will improve this by
-        // determining the student year by computing
-        // Now - Start Term.
-        if (year == 2016) {
-            return StudentYear.SENIOR;
+    public void setStudentYear(int year) {
+        int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+        int yearsInSchool = currentYear - year;
+        if (yearsInSchool > 3) {
+            this.studentYear = studentYear.SENIOR;
         }
-        else if (year == 2017) {
-            return StudentYear.JUNIOR;
+        else if (yearsInSchool > 2) {
+            this.studentYear = studentYear.JUNIOR;
         }
-        else if (year == 2018) {
-            return StudentYear.SOPHOMORE;
+        else if (yearsInSchool > 1) {
+            this.studentYear = studentYear.SOPHOMORE;
         }
         else {
-            return StudentYear.FRESHMAN;
+            this.studentYear = studentYear.FRESHMAN;
         }
-    }
-
-    public String assignAdvisor() {
-        // Iterate through number of faculty on faculty list to get length
-        // Assign random number between 0 and at length
-        // get faculty member name
-        return "hello";
     }
 
     /**
-     * Method to return a String representation of all field in the Person object.
-     * String representation uses the format shown in the Sample Output for the
-     * Student List in the registration system.
-     * @return
+     * Get method for the student's Student Year.
+     * @return the student's Student Year.
      */
-    public String toString() {
-
-        String completePersonString = "Student: " + "Name=" + super.getFullName() + ", " +
-                "SUID=" + super.getSuid() + ", " + "Email= " + email;
+    public StudentYear getStudentYear() {
+        return studentYear;
     }
 
+    /**
+     * Set method for the student's start term;
+     * @param quarter
+     * @param year
+     */
+    public void setStartTerm (Quarter quarter, int year){
+        startTerm = quarter + " " + year;
+    }
+
+    /**
+     * Get method for the student's start term.
+     * @return the student's start term.
+     */
+    public String getStartTerm() {
+        return startTerm;
+    }
+
+    /**
+     * Set method for the student's faculty advisor.
+     */
+    public void setFacultyAdvisor() {
+        facultyAdvisor = "hello";
+    }
+
+    /**
+     * Get method for the student's faculty advisor.
+     * @return the student's faculty advisor.
+     */
+    public String getFacultyAdvisor() {
+        return facultyAdvisor;
+    }
 }

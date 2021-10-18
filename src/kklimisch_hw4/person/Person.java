@@ -11,23 +11,22 @@ import enums.PersonStatus;
 public class Person {
     private String firstName;
     private String lastName;
-    private static int suid = 100000;
+    private static int instanceCounter = 100000; // Start at 100000 to replicate Sample Output
+    private int suid = 0;
     private PersonStatus status;
 
     /**
      * Constructor for the Person class. Accepts the first name
      * and last name of the person as input parameters and then
-     * assigns the person their SUID and person status.
+     * assigns the person their SUID.
      * @param firstName
      * @param lastName
      */
     public Person(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        suid++;
-        // constructor initializes the person status to active because a person must have an active
-        // person status to be in the registration system.
-        status = PersonStatus.ACTIVE;
+        suid = instanceCounter;
+        instanceCounter++;
     }
 
     /**
@@ -47,13 +46,19 @@ public class Person {
     }
 
     /**
+     * Set method for the person's Person Status.
+     * @param status
+     */
+    public void setStatus (PersonStatus status) {
+        this.status = status;
+    }
+
+    /**
      * get method for the person's Person Status.
      * @return
      */
     public PersonStatus getStatus() {
         return status;
     }
-
-
 }
 

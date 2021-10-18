@@ -1,5 +1,8 @@
 package person;
 
+import enums.Building;
+import enums.FacultyType;
+
 /**
  * <p>The <strong>Faculty</strong> class holds information about a faculty member.</p>
  * <ul>
@@ -25,6 +28,14 @@ package person;
  * @author 
  */
 public class Faculty extends Person{
+
+    // The following fields are included in the Person superclass:
+    // -first name
+    // - last name
+    // - SUID
+    // - status
+
+    private FacultyType facultyType;
 
     /**
      * 

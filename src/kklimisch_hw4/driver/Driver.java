@@ -38,14 +38,18 @@ public class Driver {
     
     private static void populateSystem(RegistrationSystem system) {
         try {
-            populateFaculty(system);
+           // populateFaculty(system);
             populateStudents(system);
+            /*
             populateSubjects(system);
             populateCourses(system);
             populatePrerequisites(system);
             populateSections(system);
+
+             */
         } catch (DuplicatePersonException e) {
             System.out.println(e.getMessage());
+            /*
         } catch (DuplicateSubjectException e) {
             System.out.println(e.getMessage());
         } catch (DuplicateCourseException e) {
@@ -58,6 +62,8 @@ public class Driver {
             System.out.println(e.getMessage());
         } catch (SectionNotFoundException e) {
             System.out.println(e.getMessage());
+
+             */
         }
     }
     
@@ -77,7 +83,8 @@ public class Driver {
         system.addStudent("Alan", "Turing", StudentType.GRAD, StudentProgram.CERT, Quarter.RQ, 2017);
         system.addStudent("Katherine", "Johnson", StudentType.GRAD, StudentProgram.MSCS, Quarter.FQ, 2018);
     }
-    
+
+    /*
     private static void populateFaculty(RegistrationSystem system) throws DuplicatePersonException {
         system.addFaculty("Adair", "Dingle", FacultyType.PROF, Building.ENGR, 531, "dingle@seattleu.edu");
         system.addFaculty("Steven", "Hanks", FacultyType.LECTURE, Building.ENGR, 511, "hankssteven@seattleu.edu");
@@ -181,8 +188,11 @@ public class Driver {
         system.addSection(SubjectCode.CPSC, 5510, 1, "David", "Lillethun", Quarter.FQ, 2018, 30, Building.ENGR, 304);        
         system.addSection(SubjectCode.CPSC, 5600, 2, "Kevin", "Lundeen", Quarter.FQ, 2018, 20, Building.BANN, 402);
     }
-    
+
+
+     */
     private static void printSystem(RegistrationSystem system) {
+        system.printStudentList();
         // TODO: implement printSystem method
     }
 
