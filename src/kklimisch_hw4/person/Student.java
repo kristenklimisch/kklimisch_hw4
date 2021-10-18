@@ -6,6 +6,7 @@ import enums.StudentType;
 import enums.StudentYear;
 import java.util.Calendar;
 import java.util.ArrayList;
+import java.util.Random;
 
 
 /**
@@ -205,10 +206,22 @@ public class Student extends Person {
      * Accepts a list of active faculty members and randomly assigns
      * the student an advisor from the list.
      *
-     * @param faculty an ArrayList of active faculty members
+     * @param faculty an array list of active faculty members
      */
     public void setFacultyAdvisor(ArrayList<Faculty> faculty) {
-        facultyAdvisor = "hello";
+        Random rand = new Random();
+
+        // Randomly select the index of one of the faculty members in the
+        // array list of active faculty members.
+        int facultyIndex = rand.nextInt(faculty.size() -1);
+
+        // Get the faculty member at the randomly-selected index.
+        Faculty advisor = faculty.get(facultyIndex);
+
+        // Get the faculty member's first and last names to create a String
+        // giving the faculty member's full name. Set the facultyAdvisor
+        // field to faculty member's full name.
+        facultyAdvisor = advisor.getFirstName() + " " + advisor.getLastName();
     }
 
     /**
