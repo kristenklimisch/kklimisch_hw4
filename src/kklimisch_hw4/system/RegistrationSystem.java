@@ -27,6 +27,7 @@ import java.util.*;
 public class RegistrationSystem {
     private ArrayList<Student> studentList;
     private ArrayList<Faculty> facultyList;
+    private Map<SubjectCode, String> subjectList;
 
 
     /**
@@ -35,6 +36,7 @@ public class RegistrationSystem {
     public RegistrationSystem() { 
         studentList = new ArrayList<>();
         facultyList = new ArrayList<>();
+        subjectList = new HashMap<>();
 
 
         // TODO: implement RegistrationSystem constructor
@@ -135,14 +137,21 @@ public class RegistrationSystem {
      * 
      * @param code    The subject code
      * @param desc    The subject description
-     * 
-     * @throws DuplicateSubjectException The subject is already in the system
+     *
+     * @throws DuplicateSubjectException
      */
     public void addSubject(SubjectCode code, String desc) 
                             throws DuplicateSubjectException {
-        
-        // TODO: implement addSubject method
-    
+
+        // Check if the subject code or description are already on the subject list.
+        // If they are, throw a duplicate subject exception.
+        if ( (subjectList.containsKey(code) ) || (subjectList.containsValue(desc) ) ) {
+            throw new DuplicateSubjectException();
+        }
+
+        // After verifying that the subject is not already on the subject list,
+        // add the subject to the subject list.
+        subjectList.put(code, desc);
     }
     
     /**
@@ -248,6 +257,14 @@ public class RegistrationSystem {
             }
             System.out.println(printStudent);
         }
+    }
+
+    /**
+     * Method to print every code and description pair in the subjectList
+     * hashMap.
+     */
+    public void printSubjectList() {
+
     }
 
 

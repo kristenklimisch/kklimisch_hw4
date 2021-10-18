@@ -104,7 +104,9 @@ public class Driver {
         system.addFaculty("Yingwu", "Zhu", FacultyType.ASSOCPROF, Building.ENGR, 530, "zhuy@seattleu.edu");        
     }
 /*
-    private static void populateSubjects(RegistrationSystem system) throws DuplicateSubjectException {
+
+    private static void populateSubjects(RegistrationSystem system) // throws DuplicateSubjectException
+     {
         system.addSubject(SubjectCode.BIOL, "Biology");
         system.addSubject(SubjectCode.CHEM, "Chemistry");
         system.addSubject(SubjectCode.CPSC, "Computer Science");
@@ -175,7 +177,10 @@ public class Driver {
         system.addPrerequisite(SubjectCode.CPSC, 5700, SubjectCode.CPSC, 5031);    
     }
     
-    private static void populateSections(RegistrationSystem system) throws CourseNotFoundException, PersonNotFoundException, DuplicateSectionException, SectionNotFoundException {
+     // I commented out the throws SectionNotFoundException from the method header
+    // because Professor Riley stated that we could ignore this exception.
+    private static void populateSections(RegistrationSystem system) throws CourseNotFoundException, PersonNotFoundException, DuplicateSectionException //, SectionNotFoundException
+    {
         system.addSection(SubjectCode.CPSC, 2430, 1, "Susan", "Reeder", Quarter.FQ, 2018, 15, Building.PIGT, 207);
         system.addSection(SubjectCode.CPSC, 2430, 2, "Adair", "Dingle", Quarter.FQ, 2018, 30, Building.PIGT, 207);
         system.addSection(SubjectCode.CPSC, 2600, 1, "Sheila", "Oh", Quarter.FQ, 2018, 30, Building.LEML, 122);        
