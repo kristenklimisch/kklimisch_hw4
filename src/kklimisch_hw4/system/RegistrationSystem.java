@@ -152,6 +152,7 @@ public class RegistrationSystem {
         // After verifying that the subject is not already on the subject list,
         // add the subject to the subject list.
         subjectList.put(code, desc);
+
     }
     
     /**
@@ -187,6 +188,9 @@ public class RegistrationSystem {
                             throws CourseNotFoundException {
         
         // TODO: implement addPrerequisite method
+        // get list index of
+        // do.addPrequisite
+        //
     
     }
     
@@ -264,7 +268,11 @@ public class RegistrationSystem {
      * hashMap.
      */
     public void printSubjectList() {
-
+        for (var entry :subjectList.entrySet() ) {
+              String printSubject = "Subject: " + entry.getValue() +
+                                  " (" + entry.getKey() + ")";
+            System.out.println(printSubject);
+        }
     }
 
 
