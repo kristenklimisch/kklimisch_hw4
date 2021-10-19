@@ -39,8 +39,8 @@ public class Driver {
         try {
             populateFaculty(system);
             populateStudents(system);
-            /*
             populateSubjects(system);
+            /*
             populateCourses(system);
             populatePrerequisites(system);
             populateSections(system);
@@ -48,9 +48,9 @@ public class Driver {
              */
         } catch (DuplicatePersonException e) {
             System.out.println(e.getMessage());
-            /*
         } catch (DuplicateSubjectException e) {
             System.out.println(e.getMessage());
+            /*
         } catch (DuplicateCourseException e) {
             System.out.println(e.getMessage());
         } catch (CourseNotFoundException e) {
@@ -103,16 +103,16 @@ public class Driver {
         system.addFaculty("Jason", "Wong", FacultyType.INSTRUCT, Building.ENGR, 526, "wongja@seattleu.edu");
         system.addFaculty("Yingwu", "Zhu", FacultyType.ASSOCPROF, Building.ENGR, 530, "zhuy@seattleu.edu");        
     }
-/*
 
-    private static void populateSubjects(RegistrationSystem system) // throws DuplicateSubjectException
+
+    private static void populateSubjects(RegistrationSystem system)  throws DuplicateSubjectException
      {
         system.addSubject(SubjectCode.BIOL, "Biology");
         system.addSubject(SubjectCode.CHEM, "Chemistry");
         system.addSubject(SubjectCode.CPSC, "Computer Science");
         system.addSubject(SubjectCode.MATH, "Mathematics");
     }
-    
+    /*
     private static void populateCourses(RegistrationSystem system) throws DuplicateCourseException {
         system.addCourse(SubjectCode.CPSC, 1420, "Programming and Problem Solving I", 5);
         system.addCourse(SubjectCode.CPSC, 1430, "Programming and Problem Solving II", 5);
@@ -205,6 +205,8 @@ public class Driver {
         system.printFacultyList();
         System.out.println("\n-- STUDENT LIST --");
         system.printStudentList();
+        System.out.println("\n-- SUBJECT LIST--");
+        system.printSubjectList();
 
 
         // TODO: implement printSystem method

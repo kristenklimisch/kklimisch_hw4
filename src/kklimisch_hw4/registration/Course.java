@@ -1,6 +1,7 @@
 package registration;
 
 import enums.SubjectCode;
+import java.util.*;
 
 /**
  * <p>The <strong>Course</strong> class holds information about a course.</p>
@@ -24,9 +25,24 @@ import enums.SubjectCode;
  * @author 
  */
 public class Course {
-    
+
+    // TODO: add Course fields
+    // - subject code (see SubjectCode)
+    // - course number
+    // - course name
+    // - credit number
+    // - a collection of prerequisite course(s)
+
+    private SubjectCode code;
+    private int courseNum;
+    private String name;
+    private int creditNum;
+    private Map<SubjectCode, Integer> prerequiste;
+    // collection of prereqs
+
     /**
-     * 
+     * Constructor for Course objects.
+     *
      * @param code      The subject code of the course
      * @param courseNum The course number of the course
      * @param name      The course name
@@ -34,18 +50,62 @@ public class Course {
      */
     public Course(SubjectCode code, int courseNum, String name, 
                     int creditNum) {
-        
-        // TODO: implement Course constructor
-    
+        this.code = code;
+        this.courseNum = courseNum;
+        this.name = name;
+        this.creditNum = creditNum;
+        prerequiste = new HashMap<>();
+    }
+
+    /**
+     * Get method for the course's subject code.
+     *
+     * @return the course's subject code.
+     */
+    public SubjectCode getCode() {
+        return code;
+    }
+
+    /**
+     * Get method for the course's number.
+     *
+     * @return the course's number.
+     */
+    public int getCourseNum() {
+        return courseNum;
+    }
+
+    /**
+     * Get method for course's name.
+     *
+     * @return
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Get method for the course's number of credits.
+     *
+     * @return the course's number of credits.
+     */
+    public int getCreditNum() {
+        return creditNum;
+    }
+
+    /**
+     * Set method for course prerequisites. Accepts the prerequisite course
+     *
+     * @param prereqCode
+     * @param prereqNum
+     */
+
+    public void setPrerequiste(SubjectCode prereqCode, int prereqNum) {
+
     }
 
     
-    // TODO: add Course fields 
-    // - subject code (see SubjectCode)
-    // - course number
-    // - course name
-    // - credit number
-    // - a collection of prerequisite course(s)
+
     
 }
 

@@ -84,6 +84,10 @@ public class Student extends Person {
 
         // TODO: implement Student constructor
         super(firstName, lastName);
+        // Initialize facultyAdvisor field to "not yet assigned" since students
+        // may not be assigned an advisor for a period of time when first
+        // enrolled as a student.
+        facultyAdvisor = "Not yet assigned";
     }
 
     /**
@@ -141,20 +145,12 @@ public class Student extends Person {
      * from one of the defined options in the Student Year enumerator,
      * which are as follows: freshman, sophomore, junior, or senior.
      *
-     * If time allows, I want to explore the other options for initializing
-     * this field - the RegistrationSystem currently only calls the
-     * setStudentYear method for undergraduate students, leaving
-     * this field uninitialized for graduate students. I'd consider making
-     * a separate undergraduate class that inherits from the Student class
-     * and just has the student year field and methods, but I'd have to
-     * explore how that affects my addStudent and printStudentList methods
-     * in the Registration System class (they may actually be fine though,
-     * given Liskov's Substitution Principle, but I'd have to look into it).
-     *
-     * Also if time allows, I'd like to explore incorporating the entire
-     * start term (quarter and year) into the computation of the number of
-     * years an undergraduate student has been in school. The current computation
-     * just uses the start year.
+     * I didn't have time to do this for this assignment, but a future
+     * improvement I could make to this method would be to incorporate
+     * the entire start term (quarter and year)
+     * into the computation of the number of years an undergraduate
+     * student has been in school. The current computation just uses
+     * the start year.
      *
      * @param year - the year in which the student started their current
      *             program

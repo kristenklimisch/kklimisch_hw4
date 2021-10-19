@@ -7,6 +7,8 @@ a Person superclass is for the assignment of the SUIDs. Assigning  the SUIDs in 
 superclass rather than in the Student and Faculty subclasses ensures that a Student object 
 and Faculty object will never be assigned the same SUID. 
 
+To do: Explain why didn't make a separate object for undergraduate students
+
 Note to grader: I added a private static field called instanceCounter to the Person object 
 to count how many times Faculty and Student objects have been instantiated. I use this field
 to ensure that every Faculty and Student object is assigned a unique SUID. Per the

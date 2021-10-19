@@ -28,6 +28,7 @@ public class RegistrationSystem {
     private ArrayList<Student> studentList;
     private ArrayList<Faculty> facultyList;
     private Map<SubjectCode, String> subjectList;
+    private ArrayList<Course> courseList;
 
 
     /**
@@ -37,10 +38,7 @@ public class RegistrationSystem {
         studentList = new ArrayList<>();
         facultyList = new ArrayList<>();
         subjectList = new HashMap<>();
-
-
-        // TODO: implement RegistrationSystem constructor
-    
+        courseList = new ArrayList<>();
     }
     
     /**
@@ -61,7 +59,7 @@ public class RegistrationSystem {
 
 
         // Create student object.
-        Student currStudent = new Student(firstName, lastName);
+        Student newStudent = new Student(firstName, lastName);
 
         // Check if student is already on the list. If they are,
         // throw a duplicate person exception.
@@ -74,13 +72,13 @@ public class RegistrationSystem {
 
         // After verifying that the student isn't already on the list,
         // initialize remaining student object fields.
-        currStudent.setEmail(firstName, lastName);
-        currStudent.setStudentType(type);
-        currStudent.setProgram(program);
-        currStudent.setStartTerm(quarter, year);
-        currStudent.setFacultyAdvisor(facultyList);
+        newStudent.setEmail(firstName, lastName);
+        newStudent.setStudentType(type);
+        newStudent.setProgram(program);
+        newStudent.setStartTerm(quarter, year);
+        newStudent.setFacultyAdvisor(facultyList);
         if (type == StudentType.UNDERGRAD) {
-            currStudent.setStudentYear(year);
+            newStudent.setStudentYear(year);
 
             // the Student Year field is never initialized for
             // graduate students, meaning the field is left null.
@@ -90,7 +88,7 @@ public class RegistrationSystem {
         }
 
         //Add student to the students list
-        studentList.add(currStudent);
+        studentList.add(newStudent);
     }
     
     /**
@@ -108,6 +106,7 @@ public class RegistrationSystem {
                             FacultyType type, Building bldg, int room, String email) 
                             throws DuplicatePersonException {
 
+        // Create Faculty object.
         Faculty member = new Faculty(firstName, lastName);
 
         // Check if faculty member is already on the list. If they are,
@@ -133,7 +132,6 @@ public class RegistrationSystem {
     
     /**
      * Adds a subject to the subject list collection.
-     * (hint: use a Map instead of creating a class)
      * 
      * @param code    The subject code
      * @param desc    The subject description
@@ -144,14 +142,14 @@ public class RegistrationSystem {
                             throws DuplicateSubjectException {
 
         // Check if the subject code or description are already on the subject list.
-        // If they are, throw a duplicate subject exception.
+        // If they are, throw a duplicate subject exception. If they are not,
+        // add the subject to the subject list.
         if ( (subjectList.containsKey(code) ) || (subjectList.containsValue(desc) ) ) {
             throw new DuplicateSubjectException();
         }
-
-        // After verifying that the subject is not already on the subject list,
-        // add the subject to the subject list.
-        subjectList.put(code, desc);
+        else {
+            subjectList.put(code, desc);
+        }
     }
     
     /**
@@ -165,9 +163,41 @@ public class RegistrationSystem {
      */
     public void addCourse(SubjectCode code, int num, String name, 
                             int creditNum) throws DuplicateCourseException {
-        
-        // TODO: implement addCourse method
-    
+
+        // Create Course object.
+        Course newCourse = new Course(code, num, name, creditNum);
+
+        // Check if course is already on the course list.
+        // If it is, throw a duplicate course exception.
+        // Assumption: A course with the same subject code and
+        // course number as a course already on the list is a
+        // duplicate course.
+        for (int i = 0; i < courseList.size(); i++){
+            if ( (num == courseList.get(i).getCourseNum() ) &&
+                    (code == courseList.get(i).getCode() ) ) {
+                throw new DuplicateCourseException();
+            }
+        }
+    }
+
+    /**
+     * Private method to find the index of a course on the course list array list.
+     * Each course is uniquely identified by the combination of its subject code
+     * and course number.
+     *
+     * @param code the course subject code
+     * @param num the course number
+     * @return the index of the course if the course is found in the course list,
+     *         else return -1
+     */
+    private int getCourseIndex(SubjectCode code, int num) {
+        for (int i = 0; i < courseList.size(); i++) {
+            if ( (num == courseList.get(i).getCourseNum() ) &&
+                    (code == courseList.get(i).getCode() ) ) {
+                return i;
+            }
+        }
+        return -1;
     }
     
     /**
@@ -186,7 +216,41 @@ public class RegistrationSystem {
                             SubjectCode prereqCode, int prereqNum) 
                             throws CourseNotFoundException {
         
+
+
         // TODO: implement addPrerequisite method
+        // Find index of course to which the prerequisite should be added in
+        // the courseList array list. If the course is not found in courseList,
+        // throw a course not found exception.
+        int courseIndex = getCourseIndex(code, num);
+
+        // The getCourseIndex method returns -1 if the course is not found
+        // in the course list.
+        if (courseIndex == -1) {
+            throw new CourseNotFoundException();
+        }
+
+
+
+
+
+
+
+        // Idea for future improvement: Create 2 separate course not found
+        // exceptions, so that the exception message indicates whether the
+        // course not found is the course to which the user is trying to add
+        // the prerequisite, or if there is no course matching the code and
+        // prereqNum in the course list.
+        // add the prerequisite, or the course number of the prerequisite.
+        // to which they're
+
+        // go into subject object
+
+        // add its prereqs to a HashMap
+
+
+        // do.addPrequisite
+        //
     
     }
     
@@ -264,7 +328,11 @@ public class RegistrationSystem {
      * hashMap.
      */
     public void printSubjectList() {
-
+        for (var entry :subjectList.entrySet() ) {
+              String printSubject = "Subject: " + entry.getValue() +
+                                  " (" + entry.getKey() + ")";
+            System.out.println(printSubject);
+        }
     }
 
 
