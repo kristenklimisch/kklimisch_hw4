@@ -43,10 +43,8 @@ public class Driver {
             populateSubjects(system);
             populateCourses(system);
             populatePrerequisites(system);
-            /*
             populateSections(system);
 
-             */
         } catch (DuplicatePersonException e) {
             System.out.println(e.getMessage());
         } catch (DuplicateSubjectException e) {
@@ -60,15 +58,15 @@ public class Driver {
         // Exception I added.
         } catch (PrereqCourseNotFoundException e) {
             System.out.println(e.getMessage());
-            /*
-
         } catch (PersonNotFoundException e) {
             System.out.println(e.getMessage());
         } catch (DuplicateSectionException e) {
             System.out.println(e.getMessage());
+            /*
+            Commented out Section Not Found Exception because
+            Professorer Riley said we could ignore it.
         } catch (SectionNotFoundException e) {
             System.out.println(e.getMessage());
-
              */
         }
     }
@@ -185,7 +183,7 @@ public class Driver {
         system.addPrerequisite(SubjectCode.CPSC, 5700, SubjectCode.CPSC, 5031);    
     }
     
-     /*
+
      // I commented out the throws SectionNotFoundException from the method header
     // because Professor Riley stated that we could ignore this exception.
     private static void populateSections(RegistrationSystem system) throws CourseNotFoundException, PersonNotFoundException, DuplicateSectionException //, SectionNotFoundException
@@ -202,9 +200,6 @@ public class Driver {
         system.addSection(SubjectCode.CPSC, 5600, 2, "Kevin", "Lundeen", Quarter.FQ, 2018, 20, Building.BANN, 402);
     }
 
-
-     */
-
     /**
      * Method to print the contents of all Registration System collections.
      * @param system
@@ -218,9 +213,8 @@ public class Driver {
         system.printSubjectList();
         System.out.println("\n-- COURSE LIST-- ");
         system.printCourseList();
-
-
-        // TODO: implement printSystem method
+        System.out.println("\n-- SECTION LIST-- ");
+        system.printSectionList();
     }
 
 }

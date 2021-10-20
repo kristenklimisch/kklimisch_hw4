@@ -88,12 +88,14 @@ public class Section {
     }
 
     /**
-     * Get method for quarter that the section is held.
+     * Get method for the section term,
+     * which is the quarter and year in which the section is held.
      *
-     * @return the quarter that the section is held
+     * @return the section term
      */
-    public Quarter getQuarter() {
-        return quarter;
+    public String getTerm() {
+        String term = quarter + " " + year;
+        return term;
     }
 
     /**
@@ -119,7 +121,7 @@ public class Section {
      *
      * @return the room number for the section
      */
-    public int room() {
+    public int getRoom() {
         return room;
     }
 }
