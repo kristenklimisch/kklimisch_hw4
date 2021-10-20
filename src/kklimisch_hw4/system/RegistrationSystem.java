@@ -223,11 +223,13 @@ public class RegistrationSystem {
         // the courseList array list. If the course is not found in courseList,
         // throw a course not found exception.
         int courseIndex = getCourseIndex(code, num);
-
         // The getCourseIndex method returns -1 if the course is not found
         // in the course list.
         if (courseIndex == -1) {
             throw new CourseNotFoundException();
+        }
+        else {
+
         }
 
 
