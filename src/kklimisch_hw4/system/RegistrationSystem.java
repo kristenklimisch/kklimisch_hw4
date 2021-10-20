@@ -176,7 +176,8 @@ public class RegistrationSystem {
     }
 
     /**
-     * Private method to find the index of a course on the course list array list.
+     * Private helper method for Add Prerequsite method.
+     * Finds the index of a course on the course list array list.
      * Each course is uniquely identified by the combination of its subject code
      * and course number.
      *
@@ -322,12 +323,43 @@ public class RegistrationSystem {
     }
 
     /**
+     * Private helper method for the Print Course List method.
+     * Accepts a course object c and prints every prerequisite
+     * unique identifier (which is the subject code + the course
+     * number) and course name in the prerequisite HashMap.
+     * @param c the Course object
+     */
+    private void printPrerequisites(Course c) {
+        Map<String, String> prerequisites = c.getPrerequiste();
+        for (var entry :prerequisites.entrySet() ) {
+            String prereqInfo = "Name=" + entry.getKey() + ": " +
+                                entry.getValue();
+            System.out.print(prereqInfo);
+        }
+    }
+
+
+
+
+    /**
      * Method to print the information for every course in the course list,
      * including the information for the prerequisites for each course.
      */
     public void printCourseList() {
+        for (int i = 0; i < courseList.size(); i++) {
+            Course c = courseList.get(i);
+            String printCourse = "Course: Name=" + c.getCode() + "-" +
+                    c.getCourseNum() + ": " +
+                    c.getName() + ", " +
+                    "Credits=" + c.getCreditNum() + ", " +
+                    "Prerequisites=[";
+            System.out.print(printCourse);
+            printPrerequisites(c);
+            System.out.println("]");
+        }
+        }
 
-    }
+
 
 
 

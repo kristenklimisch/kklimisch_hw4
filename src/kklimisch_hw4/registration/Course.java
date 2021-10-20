@@ -109,6 +109,16 @@ public class Course {
         prerequiste.put(prereqIdentifier, prereqName);
     }
 
+
+    /**
+     * Get method for course prerequisites. Returns the HashMap
+     * containing the information for the prerequisites.
+     * @return
+     */
+    public Map<String, String> getPrerequiste(){
+        return prerequiste;
+    }
+
     
 
     

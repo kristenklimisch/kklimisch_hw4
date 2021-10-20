@@ -10,6 +10,7 @@ import exception.CourseNotFoundException;
 import exception.DuplicateCourseException;
 import exception.DuplicatePersonException;
 import exception.DuplicateSubjectException;
+import exception.PrereqCourseNotFoundException;
 import exception.PersonNotFoundException;
 import system.RegistrationSystem;
 import exception.DuplicateSectionException;
@@ -40,9 +41,9 @@ public class Driver {
             populateFaculty(system);
             populateStudents(system);
             populateSubjects(system);
-            /*
             populateCourses(system);
             populatePrerequisites(system);
+            /*
             populateSections(system);
 
              */
@@ -50,7 +51,6 @@ public class Driver {
             System.out.println(e.getMessage());
         } catch (DuplicateSubjectException e) {
             System.out.println(e.getMessage());
-            /*
         } catch (DuplicateCourseException e) {
             System.out.println(e.getMessage());
         } catch (CourseNotFoundException e) {
@@ -60,6 +60,8 @@ public class Driver {
         // Exception I added.
         } catch (PrereqCourseNotFoundException e) {
             System.out.println(e.getMessage());
+            /*
+
         } catch (PersonNotFoundException e) {
             System.out.println(e.getMessage());
         } catch (DuplicateSectionException e) {
@@ -117,7 +119,7 @@ public class Driver {
         system.addSubject(SubjectCode.CPSC, "Computer Science");
         system.addSubject(SubjectCode.MATH, "Mathematics");
     }
-    /*
+
     private static void populateCourses(RegistrationSystem system) throws DuplicateCourseException {
         system.addCourse(SubjectCode.CPSC, 1420, "Programming and Problem Solving I", 5);
         system.addCourse(SubjectCode.CPSC, 1430, "Programming and Problem Solving II", 5);
@@ -151,7 +153,8 @@ public class Driver {
         system.addCourse(SubjectCode.CPSC, 5700, "Computer Graphics", 5);
     }
     
-    private static void populatePrerequisites(RegistrationSystem system) throws CourseNotFoundException {
+    private static void populatePrerequisites(RegistrationSystem system)
+            throws CourseNotFoundException, PrereqCourseNotFoundException {
         system.addPrerequisite(SubjectCode.CPSC, 1430, SubjectCode.CPSC, 1420);
         system.addPrerequisite(SubjectCode.CPSC, 2430, SubjectCode.CPSC, 1430);
         system.addPrerequisite(SubjectCode.CPSC, 2500, SubjectCode.CPSC, 1430);
@@ -182,6 +185,7 @@ public class Driver {
         system.addPrerequisite(SubjectCode.CPSC, 5700, SubjectCode.CPSC, 5031);    
     }
     
+     /*
      // I commented out the throws SectionNotFoundException from the method header
     // because Professor Riley stated that we could ignore this exception.
     private static void populateSections(RegistrationSystem system) throws CourseNotFoundException, PersonNotFoundException, DuplicateSectionException //, SectionNotFoundException
