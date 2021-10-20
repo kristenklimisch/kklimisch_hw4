@@ -1,3 +1,8 @@
+/*
+ * Kristen Klimisch
+ * CPSC 5011, Seattle University
+ * This is free and unencumbered software released into the public domain.
+ */
 package registration;
 
 import enums.Building;
@@ -24,7 +29,8 @@ import person.Faculty;
  * <li><strong>location (building/room):</strong> LEML 122</li>
  * </ul>
  * 
- * @author 
+ * @author Kristen Klimisch
+ * @version 1.0
  */
 public class Section {
     private Course course;

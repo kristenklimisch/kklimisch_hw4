@@ -1,3 +1,8 @@
+/*
+ * Kristen Klimisch
+ * CPSC 5011, Seattle University
+ * This is free and unencumbered software released into the public domain.
+ */
 package person;
 
 import enums.Building;
@@ -25,7 +30,8 @@ import enums.FacultyType;
  * <li><strong>email:</strong> ohsh@seattleu.edu</li>
  * </ul>
  * 
- * @author 
+ * @author Kristen Klimisch
+ * @version 1.0
  */
 public class Faculty extends Person{
 
@@ -46,27 +52,20 @@ public class Faculty extends Person{
      */
     public Faculty(String firstName, String lastName) {
         super(firstName, lastName);
-
     }
 
     /**
      * Set method for faculty's email.
-     * @param email   The email address
+     *
+     * @param email The email address
      */
     public void setEmail(String email) {
         this.email = email;
     }
 
     /**
-     * Get method for faculty's email.
-     * @return the faculty's email address.
-     */
-    public String getEmail() {
-        return email;
-    }
-
-    /**
      * Set method for the faculty's Faculty Type.
+     *
      * @param type - one of the defined options in the Faculty Type enumerator.
      */
     public void setFacultyType(FacultyType type){
@@ -74,15 +73,8 @@ public class Faculty extends Person{
     }
 
     /**
-     * Get method for faculty's Faculty Type.
-     * @return the faculty's Faculty Type.
-     */
-    public FacultyType getFacultyType() {
-        return facultyType;
-    }
-
-    /**
      * Set method for the faculty's office.
+     *
      * @param bldg - one of the defined buildings in the Building enumerator.
      * @param room - the room number
      */
@@ -91,10 +83,19 @@ public class Faculty extends Person{
     }
 
     /**
-     * Get method for the faculty's office.
-     * @return the building and room number of the office
+     * Method to print a String representation of all the fields in the Student object.
+     * String is formatted to match the desired output of the Registration System.
+     *
+     * @return String representation of the Faculty object
      */
-    public String getOffice() {
-        return office;
+    public String toString() {
+        String facultyString = "Faculty: Name=" + super.getFirstName() + " " +
+                super.getLastName() + ", " +
+                "SUID=" + super.getSuid() + ", " +
+                "Email=" + email + ", " +
+                "Status=" + super.getStatus() + ", " +
+                "Type=" + facultyType + ", " +
+                "Office=" + office;
+        return facultyString;
     }
 }

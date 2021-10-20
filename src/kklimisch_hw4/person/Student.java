@@ -1,5 +1,9 @@
+/*
+ * Kristen Klimisch
+ * CPSC 5011, Seattle University
+ * This is free and unencumbered software released into the public domain.
+ */
 package person;
-
 import enums.Quarter;
 import enums.StudentProgram;
 import enums.StudentType;
@@ -7,7 +11,6 @@ import enums.StudentYear;
 import java.util.Calendar;
 import java.util.ArrayList;
 import java.util.Random;
-
 
 /**
  * <p>The <strong>Student</strong> class holds information about a student.</p>
@@ -57,7 +60,8 @@ import java.util.Random;
  * <li><strong>email:</strong> busterbluth@seattleu.edu</li>
  * </ul>
  * 
- * @author 
+ * @author Kristen Klimisch
+ * @version 1.0
  */
 public class Student extends Person {
 
@@ -74,15 +78,14 @@ public class Student extends Person {
     private String startTerm;
     private String facultyAdvisor;
 
-
     /**
      * Constructor for Student object.
-     * @param firstName   The first name of the student
-     * @param lastName    The last name of the student
+     *
+     * @param firstName The first name of the student
+     * @param lastName  The last name of the student
      */
     public Student(String firstName, String lastName) {
 
-        // TODO: implement Student constructor
         super(firstName, lastName);
         // Initialize facultyAdvisor field to "not yet assigned" since students
         // may not be assigned an advisor for a period of time when first
@@ -92,23 +95,17 @@ public class Student extends Person {
 
     /**
      * Set method for student's email.
-     * @param firstName   The first name of the student.
-     * @param lastName    The last name of the student.
+     *
+     * @param firstName The first name of the student.
+     * @param lastName  The last name of the student.
      */
     public void setEmail(String firstName, String lastName) {
         email = firstName.toLowerCase() + lastName.toLowerCase() + "@seattleu.edu";
     }
 
     /**
-     * Get method for student's email.
-     * @return the student's email address.
-     */
-    public String getEmail() {
-        return email;
-    }
-
-    /**
      * Set method for the student's Student Type.
+     *
      * @param studentType - one of the defined options in the Student Type enumerator.
      */
     public void setStudentType(StudentType studentType) {
@@ -116,27 +113,12 @@ public class Student extends Person {
     }
 
     /**
-     * Get method for the student's Student Type.
-     * @return the student's Student Type.
-     */
-    public StudentType getStudentType() {
-        return studentType;
-    }
-
-    /**
      * Set method for the student's program.
+     *
      * @param program - one of the defined options in the Student Program enumerator.
      */
-    public void setProgram (StudentProgram program) {
+    public void setProgram(StudentProgram program) {
         this.program = program;
-    }
-
-    /**
-     * Get method for the student's program.
-     * @return the student's program.
-     */
-    public StudentProgram getProgram() {
-        return program;
     }
 
     /**
@@ -144,7 +126,10 @@ public class Student extends Person {
      * and uses it to assign the student a descriptive student year
      * from one of the defined options in the Student Year enumerator,
      * which are as follows: freshman, sophomore, junior, or senior.
-     *
+     * <p>
+     * This method should only be used for students with a student type
+     * of Undergraduate.
+     * <p>
      * I didn't have time to do this for this assignment, but a future
      * improvement I could make to this method would be to incorporate
      * the entire start term (quarter and year)
@@ -161,41 +146,23 @@ public class Student extends Person {
         int yearsInSchool = currentYear - year;
         if (yearsInSchool > 3) {
             this.studentYear = studentYear.SENIOR;
-        }
-        else if (yearsInSchool > 2) {
+        } else if (yearsInSchool > 2) {
             this.studentYear = studentYear.JUNIOR;
-        }
-        else if (yearsInSchool > 1) {
+        } else if (yearsInSchool > 1) {
             this.studentYear = studentYear.SOPHOMORE;
-        }
-        else {
+        } else {
             this.studentYear = studentYear.FRESHMAN;
         }
     }
 
     /**
-     * Get method for the student's Student Year.
-     * @return the student's Student Year.
-     */
-    public StudentYear getStudentYear() {
-        return studentYear;
-    }
-
-    /**
      * Set method for the student's start term;
+     *
      * @param quarter
      * @param year
      */
-    public void setStartTerm (Quarter quarter, int year){
+    public void setStartTerm(Quarter quarter, int year) {
         startTerm = quarter + " " + year;
-    }
-
-    /**
-     * Get method for the student's start term.
-     * @return the student's start term.
-     */
-    public String getStartTerm() {
-        return startTerm;
     }
 
     /**
@@ -209,7 +176,7 @@ public class Student extends Person {
 
         // Randomly select the index of one of the faculty members in the
         // array list of active faculty members.
-        int facultyIndex = rand.nextInt(faculty.size() -1);
+        int facultyIndex = rand.nextInt(faculty.size() - 1);
 
         // Get the faculty member at the randomly-selected index.
         Faculty advisor = faculty.get(facultyIndex);
@@ -221,10 +188,27 @@ public class Student extends Person {
     }
 
     /**
-     * Get method for the student's faculty advisor.
-     * @return the student's faculty advisor.
+     * Method to print a String representation of all the fields in the Student object.
+     * String is formatted to match the desired output of the Registration System.
+     *
+     * @return String representation of the Student object
      */
-    public String getFacultyAdvisor() {
-        return facultyAdvisor;
+    @Override
+    public String toString() {
+        String studentString = "Student: Name=" + super.getFirstName()+ " " +
+                super.getLastName() + ", " +
+                "SUID=" + super.getSuid() + ", " +
+                "Email=" + email + ", " +
+                "Status=" + super.getStatus() + ", " +
+                "Type=" + studentType + ", " +
+                "Program=" + program + ", " +
+                "Term=" + startTerm + ", " +
+                "Advisor=" + facultyAdvisor;
+        if (studentType == StudentType.UNDERGRAD) {
+            studentString += ", Year=" + studentYear;
+        }
+        return studentString;
     }
 }
+
+

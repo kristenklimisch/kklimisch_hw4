@@ -1,5 +1,4 @@
 package system;
-
 import enums.Building;
 import enums.FacultyType;
 import enums.Quarter;
@@ -340,18 +339,9 @@ public class RegistrationSystem {
      */
     public void printFacultyList() {
         for (int i = 0; i < facultyList.size(); i++) {
-            Faculty f = facultyList.get(i);
-            String printFaculty = "Faculty: Name=" + f.getFirstName() + " " +
-                                  f.getLastName() + ", " +
-                                  "SUID=" + f.getSuid() + ", " +
-                                  "Email=" + f.getEmail() + ", " +
-                                  "Status=" + f.getStatus() + ", " +
-                                  "Type=" + f.getFacultyType() + ", " +
-                                  "Office=" + f.getOffice();
-            System.out.println(printFaculty);
+            System.out.println(facultyList.get(i).toString() );
         }
     }
-
 
     /**
      * Method to print the information for every Student object in
@@ -359,20 +349,7 @@ public class RegistrationSystem {
      */
     public void printStudentList() {
         for (int i = 0; i < studentList.size(); i++) {
-            Student s = studentList.get(i);
-            String printStudent = "Student: Name=" + s.getFirstName() + " " +
-                                  s.getLastName() + ", " +
-                                  "SUID=" + s.getSuid() + ", " +
-                                  "Email=" + s.getEmail() + ", " +
-                                  "Status=" + s.getStatus() + ", " +
-                                  "Type=" + s.getStudentType() + ", " +
-                                  "Program=" + s.getProgram() + ", " +
-                                  "Term=" + s.getStartTerm() + ", " +
-                                  "Advisor=" + s.getFacultyAdvisor();
-            if (s.getStudentType() == StudentType.UNDERGRAD ) {
-                printStudent += ", Year=" + s.getStudentYear();
-            }
-            System.out.println(printStudent);
+            System.out.println( studentList.get(i).toString() );
         }
     }
 
@@ -400,10 +377,24 @@ public class RegistrationSystem {
      */
     private void printPrerequisites(Course c) {
         Map<String, String> prerequisites = c.getPrerequiste();
+
+        // Count of total entries in the map
+        int totalEntries = prerequisites.size();
+
+        // Count of the number of entries in the map that
+        // have been access through the for loop below.
+        int entryCounter = 1;
         for (var entry :prerequisites.entrySet() ) {
             String prereqInfo = "Name=" + entry.getKey() + ": " +
                                 entry.getValue();
             System.out.print(prereqInfo);
+
+            // Print a comma after each entry except the last entry
+            // in the map.
+            if (entryCounter != totalEntries) {
+                System.out.print(", ");
+            }
+            entryCounter++;
         }
     }
 
@@ -439,11 +430,4 @@ public class RegistrationSystem {
             System.out.println(printSection);
         }
     }
-
-
-
-
-
-
-    
 }

@@ -1,3 +1,8 @@
+/*
+ * Kristen Klimisch
+ * CPSC 5011, Seattle University
+ * This is free and unencumbered software released into the public domain.
+ */
 package person;
 
 import enums.PersonStatus;
@@ -7,6 +12,17 @@ import enums.PersonStatus;
  * shared attributes of the Student and Faculty objects: a first name, last name,
  * an SUID, and a status of active or inactive. The Person class is the superclass
  * for the Student and Faculty classes.
+ *
+ * Note: I didn't include a toString method for the Person class because it can't
+ * be invoked in the Student and Faculty subclasses' toString() methods.
+ * The Student and Faculty subclasses' toString() methods insert the
+ * student's or faculty's email between their name & SUID and their status,
+ * so the Student and Faculty subclasses just invoke the get() methods for
+ * the Person superclass' fields so that they can create a String representation
+ * with the desired format.
+ *
+ * @author Kristen Klimisch
+ * @version 1.0
  */
 public class Person {
     private String firstName;

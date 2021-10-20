@@ -1,3 +1,8 @@
+/*
+ * Kristen Klimisch
+ * CPSC 5011, Seattle University
+ * This is free and unencumbered software released into the public domain.
+ */
 package registration;
 
 import enums.SubjectCode;
@@ -22,17 +27,10 @@ import java.util.*;
  * <li><strong>prerequisite(s):</strong> CPSC 5003</li>
  * </ul>
  * 
- * @author 
+ * @author Kristen Klimisch
+ * @version 1.0
  */
 public class Course {
-
-    // TODO: add Course fields
-    // - subject code (see SubjectCode)
-    // - course number
-    // - course name
-    // - credit number
-    // - a collection of prerequisite course(s)
-
     private SubjectCode code;
     private int courseNum;
     private String name;
