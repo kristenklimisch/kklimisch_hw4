@@ -216,6 +216,8 @@ public class Driver {
         system.printStudentList();
         System.out.println("\n-- SUBJECT LIST--");
         system.printSubjectList();
+        System.out.println("\n-- COURSE LIST-- ");
+        system.printCourseList();
 
 
         // TODO: implement printSystem method

@@ -173,6 +173,10 @@ public class RegistrationSystem {
                 throw new DuplicateCourseException();
             }
         }
+
+        // After verifying that course is not a duplicate course,
+        // add course to course list.
+        courseList.add(newCourse);
     }
 
     /**
@@ -217,6 +221,7 @@ public class RegistrationSystem {
         // the courseList array list. If the course is not found in courseList,
         // throw a Course Not Found Exception.
         int courseIndex = getCourseIndex(code, num);
+        System.out.println("COURSE INDEX IS" + courseIndex);
         // The getCourseIndex method returns -1 if the course is not found
         // in the course list.
         if (courseIndex == -1) {

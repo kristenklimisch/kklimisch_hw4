@@ -26,10 +26,19 @@ import person.Faculty;
  * 
  * @author 
  */
-public class Section {    
-    
+public class Section {
+    private Course course;
+    private int section;
+    private Faculty instructor;
+    private int year;
+    private Quarter quarter;
+    private int cap;
+    private Building bldg;
+    private int room;
+
     /**
-     * 
+     * Constructor for the Section class.
+     *
      * @param course     The course associated with the section
      * @param section    The section number for the course
      * @param instructor The faculty instructor teaching the course
@@ -41,18 +50,76 @@ public class Section {
      */
     public Section(Course course, int section, Faculty instructor, Quarter quarter, 
                     int year, int cap, Building bldg, int room) {
-        
-        // TODO: implement Section constructor
-        
+        this.course = course;
+        this.section = section;
+        this.instructor = instructor;
+        this.quarter = quarter;
+        this.year = year;
+        this.cap = cap;
+        this.bldg = bldg;
+        this.room = room;
     }
 
-    
-    // TODO: add Section fields including:
-    // - course
-    // - section
-    // - instructor
-    // - term (see Quarter)
-    // - capacity
-    // - location (see Building)
+    /**
+     * Get method for the section's course.
+     *
+     * @return the course associated with the section
+     */
+    public Course getCourse() {
+        return course;
+    }
 
+    /**
+     * Get method for the section's section number.
+     *
+     * @return the section's section number
+     */
+    public int getSection() {
+        return section;
+    }
+
+    /**
+     * Get method for the section's instructor.
+     *
+     * @return the section's instructor
+     */
+    public Faculty getInstructor(){
+        return instructor;
+    }
+
+    /**
+     * Get method for quarter that the section is held.
+     *
+     * @return the quarter that the section is held
+     */
+    public Quarter getQuarter() {
+        return quarter;
+    }
+
+    /**
+     * Get method for the section's capacity.
+     *
+     * @return the section's capacity
+     */
+    public int getCapacity() {
+        return cap;
+    }
+
+    /**
+     * Get method for the building in which the section is held.
+     *
+     * @return the building in which the section is held.
+     */
+    public Building getBldg() {
+        return bldg;
+    }
+
+    /**
+     * Get method for the room number for the section.
+     *
+     * @return the room number for the section
+     */
+    public int room() {
+        return room;
+    }
 }
