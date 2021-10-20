@@ -6,12 +6,7 @@ import enums.Quarter;
 import enums.StudentType;
 import enums.SubjectCode;
 import enums.StudentProgram;
-import exception.CourseNotFoundException;
-import exception.DuplicateCourseException;
-import exception.DuplicatePersonException;
-import exception.DuplicateSubjectException;
-import exception.PersonNotFoundException;
-import exception.DuplicateSectionException;
+import exception.*;
 import person.Student;
 import person.Faculty;
 import registration.Course;
@@ -211,49 +206,38 @@ public class RegistrationSystem {
      * @param prereqNum     The course number of the prerequisite
      *                      to add to the course
      * @throws CourseNotFoundException The course was not found in the system
+     * @
      */
     public void addPrerequisite(SubjectCode code, int num, 
                             SubjectCode prereqCode, int prereqNum) 
-                            throws CourseNotFoundException {
-        
+                            throws CourseNotFoundException, PrereqCourseNotFoundException {
 
-
-        // TODO: implement addPrerequisite method
         // Find index of course to which the prerequisite should be added in
         // the courseList array list. If the course is not found in courseList,
-        // throw a course not found exception.
+        // throw a Course Not Found Exception.
         int courseIndex = getCourseIndex(code, num);
         // The getCourseIndex method returns -1 if the course is not found
         // in the course list.
         if (courseIndex == -1) {
             throw new CourseNotFoundException();
         }
-        else {
 
+        // Verify that the prerequisite course can also be found in the course list.
+        // The prerequisite course needs to be in the course list because we don't
+        // receive the prerequisite course name as an input parameter, so we
+        // need to be able to get the prerequisite course name from the course list.
+        // If the prerequisite course is not in the course list, throw a
+        // Prereq Course Not Found Exception.
+        int prereqIndex = getCourseIndex(prereqCode, prereqNum);
+        if (prereqIndex == -1) {
+          throw new PrereqCourseNotFoundException();
         }
 
+        // Get name of prerequisite course
+        String prereqName = courseList.get(prereqIndex).getName();
 
-
-
-
-
-
-        // Idea for future improvement: Create 2 separate course not found
-        // exceptions, so that the exception message indicates whether the
-        // course not found is the course to which the user is trying to add
-        // the prerequisite, or if there is no course matching the code and
-        // prereqNum in the course list.
-        // add the prerequisite, or the course number of the prerequisite.
-        // to which they're
-
-        // go into subject object
-
-        // add its prereqs to a HashMap
-
-
-        // do.addPrequisite
-        //
-    
+        // Add prerequisite information to the course.
+        courseList.get(courseIndex).setPrerequiste(prereqCode, prereqNum, prereqName);
     }
     
     /**
@@ -335,6 +319,14 @@ public class RegistrationSystem {
                                   " (" + entry.getKey() + ")";
             System.out.println(printSubject);
         }
+    }
+
+    /**
+     * Method to print the information for every course in the course list,
+     * including the information for the prerequisites for each course.
+     */
+    public void printCourseList() {
+
     }
 
 

@@ -37,7 +37,7 @@ public class Course {
     private int courseNum;
     private String name;
     private int creditNum;
-    private Map<SubjectCode, Integer> prerequiste;
+    private Map<String, String> prerequiste;
     // collection of prereqs
 
     /**
@@ -94,14 +94,19 @@ public class Course {
     }
 
     /**
-     * Set method for course prerequisites. Accepts the prerequisite course
+     * Set method for course prerequisites. Creates a unique String identifier
+     * for the prerequisite course that consists of the prerequisite subject
+     * code and course number. Adds this unique identifier and the prerequisite
+     * course name as key-value pair to the prerequisite HashMap.
      *
      * @param prereqCode
      * @param prereqNum
+     * @param prereqName
      */
 
-    public void setPrerequiste(SubjectCode prereqCode, int prereqNum) {
-
+    public void setPrerequiste(SubjectCode prereqCode, int prereqNum, String prereqName) {
+        String prereqIdentifier = prereqCode + "-" + prereqNum;
+        prerequiste.put(prereqIdentifier, prereqName);
     }
 
     

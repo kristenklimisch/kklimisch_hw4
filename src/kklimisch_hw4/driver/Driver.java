@@ -55,6 +55,11 @@ public class Driver {
             System.out.println(e.getMessage());
         } catch (CourseNotFoundException e) {
             System.out.println(e.getMessage());
+
+        // Added catch statement for the Prereq Course Not Found
+        // Exception I added.
+        } catch (PrereqCourseNotFoundException e) {
+            System.out.println(e.getMessage());
         } catch (PersonNotFoundException e) {
             System.out.println(e.getMessage());
         } catch (DuplicateSectionException e) {
