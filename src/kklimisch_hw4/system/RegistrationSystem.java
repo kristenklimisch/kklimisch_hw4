@@ -1,3 +1,8 @@
+/*
+ * Kristen Klimisch
+ * CPSC 5011, Seattle University
+ * This is free and unencumbered software released into the public domain.
+ */
 package system;
 import enums.Building;
 import enums.FacultyType;
@@ -76,7 +81,6 @@ public class RegistrationSystem {
         }
         return -1;
     }
-
 
     /**
      * Add a student to the student list collection.
@@ -238,12 +242,10 @@ public class RegistrationSystem {
                             throws CourseNotFoundException, PrereqCourseNotFoundException {
 
         // Find index of course to which the prerequisite should be added in
-        // the courseList array list. If the course is not found in courseList,
-        // throw a Course Not Found Exception.
+        // the courseList array list. The getCourseIndex method returns -1
+        // if the course is not found in the course list. If the course is not found
+        // in courseList, throw a Course Not Found Exception.
         int courseIndex = getCourseIndex(code, num);
-
-        // The getCourseIndex method returns -1 if the course is not found
-        // in the course list.
         if (courseIndex == -1) {
             throw new CourseNotFoundException();
         }

@@ -85,53 +85,6 @@ public class Section {
     }
 
     /**
-     * Get method for the section's instructor.
-     *
-     * @return the section's instructor
-     */
-    public Faculty getInstructor(){
-        return instructor;
-    }
-
-    /**
-     * Get method for the section term,
-     * which is the quarter and year in which the section is held.
-     *
-     * @return the section term
-     */
-    public String getTerm() {
-        String term = quarter + " " + year;
-        return term;
-    }
-
-    /**
-     * Get method for the section's capacity.
-     *
-     * @return the section's capacity
-     */
-    public int getCapacity() {
-        return cap;
-    }
-
-    /**
-     * Get method for the building in which the section is held.
-     *
-     * @return the building in which the section is held.
-     */
-    public Building getBldg() {
-        return bldg;
-    }
-
-    /**
-     * Get method for the room number for the section.
-     *
-     * @return the room number for the section
-     */
-    public int getRoom() {
-        return room;
-    }
-
-    /**
      * Method to create a String representation of all fields in the section object.
      *
      * @return the String representation of the section object
@@ -148,5 +101,4 @@ public class Section {
                                "Room=" + bldg + " " + room;
         return sectionString;
     }
-
 }

@@ -6,7 +6,7 @@ I do believe my solution is fully working. I've identified some areas for future
 in the code, but my solution is functional and meets the assignment specifications.
 
 **Justification for additional classes and comments on design:**
-I choose to create a Person superclass that is inherited by the Student and Faculty classes. 
+I chose to create a Person superclass that is inherited by the Student and Faculty classes. 
 The Person superclass declares and initializes some of the shared fields of the Student
 and Faculty classes: first name, last name, SUID, and person status (email is also a shared field,
 but the Student and Faculty classes require different methods to set the email, so I chose to 
@@ -21,15 +21,14 @@ assignment instructions, I got permission from Professor Riley before adding
 this private field.
 
 I added the Prereq Course Not Found Exception to my exceptions package so that I could throw 2 
-exceptions from my Add Prequisites method to specifically tell the user why their attempt to add
-a prerequisite was unsuccessful. The Course Not Found Exception will be thrown if the user attempts
-to add a prerequisite to a course that is not in the course list. The Prereq Course Not Found
-exception will be thrown if the user attempts to add a prerequisite that is not in the course
-list. The user only provides the prerequisite's subject code and course number as input
-parameters, but the Registration System also needs to print the prerequisite course's name.
-That means that Registration System needs to retrieve the prerequisite course
-name from the course list, which isn't possible if the prerequisite course isn't in the 
-course list. 
+exceptions from my Registration System's addPrequisites() method to specifically tell the user 
+why their attempt to add a prerequisite was unsuccessful. The Course Not Found Exception will be 
+thrown if the user attempts to add a prerequisite to a course that is not in the course list. 
+The Prereq Course Not Found Exception will be thrown if the user attempts to add a prerequisite that
+is not in the course list. The user only provides the prerequisite's subject code and course number as 
+input parameters, but the Registration System also needs to print the prerequisite course's name.
+That means that Registration System needs to retrieve the prerequisite course name from the course list, 
+which isn't possible if the prerequisite course isn't in the course list. 
 
 I debated adding an Undergraduate class that would inherit from the Student class,
 but ultimately decided against it for the purposes of this assignment. The argument 
@@ -65,24 +64,23 @@ fields, with String formatting added between each get method call. After seeing 
 statement that it's good practice to override the toString() methods for each class, 
 I decided to instead implement a toString() method for each class and then repeatedly
 call that method as I was printing the collections in the Registration System. 
-This took up the rest of my available time, so I was not able to work on the extra credit problem
-(and is also the reason for any vestigial get() methods in my classes). 
+This took up the rest of my available time, so I was not able to work on the extra credit problem.
 
 **How much time did you spend on the assignment?**
-I spent approximately 25 hours working on this assignment. I don't know if I'm just slower than
-my classmates, but that doesn't seem to be the case based on the conversations I've had. 
+I spent approximately 25 hours working on this assignment.
 
 **Any feedback on the assignment?**
 As with the HW 2, Password Vault, this assignment was an excellent learning experience.
 I learned a lot about how classes fit together and interact with each other, and it was
 a great exercise to think about which responsibilities should be handled by the Faculty,
-Student, Course, and Section classes vs. by the Registration System class. Also as with
-HW 2, the scope of this assignment felt substantial to me, and this was a really significant 
-time commitment. The FAQ page for the Graduate Certificate in Computer Science Fundamentals
-states, "The Certificate program meets 2x/week, with 8-10 hours of work outside of class per week."
-Clearly, with me spending 20 hours outside of class on 1 assignment for 1 class, my time commitment
-to this program is greatly exceeding 8-10 hours. I'm committed to and really love this program, 
-but I'm finding it almost impossible to balance with my full time job. 
+Student, Course, and Section classes vs. by the Registration System class. This assignment also 
+really helped me to have a better understanding of inheritance. Also as with HW 2, the scope of 
+this assignment felt substantial to me, and this was a really significant time commitment. 
+The FAQ page for the Graduate Certificate in Computer Science Fundamentals states, "The Certificate
+program meets 2x/week, with 8-10 hours of work outside of class per week." Clearly, with me spending 
+25 hours outside of class on 1 assignment for 1 class, my time commitment to this program is greatly
+exceeding 8-10 hours. I'm committed to and really love this program, but I'm finding it almost 
+impossible to balance with my full time job. 
 
 
 

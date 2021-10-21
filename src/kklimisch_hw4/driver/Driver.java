@@ -1,3 +1,8 @@
+/*
+ * Kristen Klimisch
+ * CPSC 5011, Seattle University
+ * This is free and unencumbered software released into the public domain.
+ */
 package driver;
 
 import enums.Building;
@@ -25,6 +30,12 @@ import exception.SectionNotFoundException;
  */
 public class Driver {
 
+    /**
+     * Creates a new Registration System, populates the system,
+     * and prints the contents of the system.
+     *
+     * @param args A string array containing the command line arguments.
+     */
     public static void main(String[] args) {
         RegistrationSystem system = new RegistrationSystem();
         populateSystem(system);    
@@ -88,7 +99,6 @@ public class Driver {
         system.addStudent("Katherine", "Johnson", StudentType.GRAD, StudentProgram.MSCS, Quarter.FQ, 2018);
     }
 
-
     private static void populateFaculty(RegistrationSystem system) throws DuplicatePersonException {
         system.addFaculty("Adair", "Dingle", FacultyType.PROF, Building.ENGR, 531, "dingle@seattleu.edu");
         system.addFaculty("Steven", "Hanks", FacultyType.LECTURE, Building.ENGR, 511, "hankssteven@seattleu.edu");
@@ -108,7 +118,6 @@ public class Driver {
         system.addFaculty("Jason", "Wong", FacultyType.INSTRUCT, Building.ENGR, 526, "wongja@seattleu.edu");
         system.addFaculty("Yingwu", "Zhu", FacultyType.ASSOCPROF, Building.ENGR, 530, "zhuy@seattleu.edu");        
     }
-
 
     private static void populateSubjects(RegistrationSystem system)  throws DuplicateSubjectException
      {
@@ -200,10 +209,9 @@ public class Driver {
         system.addSection(SubjectCode.CPSC, 5600, 2, "Kevin", "Lundeen", Quarter.FQ, 2018, 20, Building.BANN, 402);
     }
 
-    /**
-     * Method to print the contents of all Registration System collections.
-     * @param system
-     */
+
+     // Method to print the contents of all Registration System collections.
+     // @param system - the Registration System.
     private static void printSystem(RegistrationSystem system) {
         System.out.println("-- FACULTY LIST --");
         system.printFacultyList();
