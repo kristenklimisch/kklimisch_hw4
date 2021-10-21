@@ -130,4 +130,23 @@ public class Section {
     public int getRoom() {
         return room;
     }
+
+    /**
+     * Method to create a String representation of all fields in the section object.
+     *
+     * @return the String representation of the section object
+     */
+    @Override
+    public String toString() {
+        String sectionString = "Section: Course=" + course.getCode() +
+                               "-" + course.getCourseNum() + ": " +
+                               course.getName() + ", " +
+                               "Faculty=" + instructor. getFirstName() + " " +
+                               instructor.getLastName() + ", " +
+                               "Term=" + quarter + " " + year + ", " +
+                               "Capacity=" + cap + ", " +
+                               "Room=" + bldg + " " + room;
+        return sectionString;
+    }
+
 }

@@ -188,7 +188,7 @@ public class Student extends Person {
     }
 
     /**
-     * Method to print a String representation of all the fields in the Student object.
+     * Method to create a String representation of all the fields in the Student object.
      * String is formatted to match the desired output of the Registration System.
      *
      * @return String representation of the Student object
@@ -196,14 +196,14 @@ public class Student extends Person {
     @Override
     public String toString() {
         String studentString = "Student: Name=" + super.getFirstName()+ " " +
-                super.getLastName() + ", " +
-                "SUID=" + super.getSuid() + ", " +
-                "Email=" + email + ", " +
-                "Status=" + super.getStatus() + ", " +
-                "Type=" + studentType + ", " +
-                "Program=" + program + ", " +
-                "Term=" + startTerm + ", " +
-                "Advisor=" + facultyAdvisor;
+                                super.getLastName() + ", " +
+                               "SUID=" + super.getSuid() + ", " +
+                               "Email=" + email + ", " +
+                               "Status=" + super.getStatus() + ", " +
+                               "Type=" + studentType + ", " +
+                               "Program=" + program + ", " +
+                               "Term=" + startTerm + ", " +
+                               "Advisor=" + facultyAdvisor;
         if (studentType == StudentType.UNDERGRAD) {
             studentString += ", Year=" + studentYear;
         }

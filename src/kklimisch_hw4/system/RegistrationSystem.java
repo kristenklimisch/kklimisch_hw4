@@ -366,68 +366,21 @@ public class RegistrationSystem {
     }
 
     /**
-     * Private helper method for the Print Course List method.
-     * Accepts a course object c and prints every prerequisite
-     * unique identifier (which is the subject code + the course
-     * number) and course name in the prerequisite HashMap.
-     * @param c the Course object
-     *
-     * If time allows, I'd really like to fix the formatting of
-     * how these are printed.
-     */
-    private void printPrerequisites(Course c) {
-        Map<String, String> prerequisites = c.getPrerequiste();
-
-        // Count of total entries in the map
-        int totalEntries = prerequisites.size();
-
-        // Count of the number of entries in the map that
-        // have been access through the for loop below.
-        int entryCounter = 1;
-        for (var entry :prerequisites.entrySet() ) {
-            String prereqInfo = "Name=" + entry.getKey() + ": " +
-                                entry.getValue();
-            System.out.print(prereqInfo);
-
-            // Print a comma after each entry except the last entry
-            // in the map.
-            if (entryCounter != totalEntries) {
-                System.out.print(", ");
-            }
-            entryCounter++;
-        }
-    }
-
-    /**
      * Method to print the information for every course in the course list,
      * including the information for the prerequisites for each course.
      */
     public void printCourseList() {
         for (int i = 0; i < courseList.size(); i++) {
-            Course c = courseList.get(i);
-            String printCourse = "Course: Name=" + c.getCode() + "-" +
-                                 c.getCourseNum() + ": " +
-                                 c.getName() + ", " +
-                                 "Credits=" + c.getCreditNum() + ", " +
-                                 "Prerequisites=[";
-                                  System.out.print(printCourse);
-                                  printPrerequisites(c);
-            System.out.println("]");
+            System.out.println(courseList.get(i).toString() );
         }
     }
 
+    /**
+     * Method to print the information for every section in the section list.
+     */
     public void printSectionList() {
         for (int i=0; i< sectionList.size(); i++) {
-            Section sec = sectionList.get(i);
-            String printSection = "Section: Course=" + sec.getCourse().getCode() +
-                                  "-" + sec.getCourse().getCourseNum() + ": " +
-                                  sec.getCourse().getName() + ", " +
-                                  "Faculty=" + sec.getInstructor(). getFirstName() + " " +
-                                  sec.getInstructor().getLastName() + ", " +
-                                  "Term=" + sec.getTerm() + ", " +
-                                  "Capacity=" + sec.getCapacity() + ", " +
-                                  "Room=" + sec.getBldg() + " " + sec.getRoom();
-            System.out.println(printSection);
+            System.out.println(sectionList.get(i).toString() );
         }
     }
 }

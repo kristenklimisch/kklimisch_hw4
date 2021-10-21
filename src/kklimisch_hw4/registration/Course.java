@@ -83,15 +83,6 @@ public class Course {
     }
 
     /**
-     * Get method for the course's number of credits.
-     *
-     * @return the course's number of credits.
-     */
-    public int getCreditNum() {
-        return creditNum;
-    }
-
-    /**
      * Set method for course prerequisites. Creates a unique String identifier
      * for the prerequisite course that consists of the prerequisite subject
      * code and course number. Adds this unique identifier and the prerequisite
@@ -107,18 +98,53 @@ public class Course {
         prerequiste.put(prereqIdentifier, prereqName);
     }
 
-
     /**
-     * Get method for course prerequisites. Returns the HashMap
-     * containing the information for the prerequisites.
-     * @return
+     * Private helper method for the toString() method.
+     * Creates a String representation of all unique identifiers and
+     * course names in the prerequisite HashMap.
+     *
+     * @return a String representation of all unique identifiers and
+     *         course names in the prerequisite HashMap.
      */
-    public Map<String, String> getPrerequiste(){
-        return prerequiste;
+    private String prereqToString() {
+
+        // Count of total entries in the prerequisite HashMap.
+        int totalEntries = prerequiste.size();
+
+        // Count of the number of entries in the map that
+        // have been access through the for loop below.
+        int entryCounter = 1;
+
+        String prereqInfo = "";
+
+        for (var entry :prerequiste.entrySet() ) {
+            prereqInfo = "Name=" + entry.getKey() + ": " +
+                         entry.getValue();
+
+            // Print a comma after each entry except the last entry
+            // in the map.
+            if (entryCounter != totalEntries) {
+                prereqInfo += (", ");
+            }
+        }
+        return prereqInfo;
     }
 
-    
-
-    
+    /**
+     * Method to create a String representation of all fields in the course object,
+     * including all key-value pairs in the prerequisite HashMap.
+     *
+     * @return a String representation of the course object.
+     */
+    @Override
+    public String toString() {
+        String courseString = "Course: Name=" + code + "-" +
+                courseNum+ ": " +
+                name + ", " +
+                "Credits=" + creditNum + ", " +
+                "Prerequisites=[";
+        courseString += prereqToString()+ ("]");
+        return courseString;
+    }
 }
 
