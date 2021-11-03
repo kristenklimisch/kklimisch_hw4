@@ -46,25 +46,21 @@ Undergraduate class rather than the Student class; would I create 2
 different student lists, one for graduate students and one for undergraduates?
 If I stored both the Student and Undergraduate objects in one array list,
 how would I know which type of object I was dealing with when I iterated 
-through the list to print the objects? With more time, I would have explored 
-these questions, but putting the Student Year field in the Student class and
-only initializing it for undergraduate students had already given me a workable solution.
-With the time constraints, I decided to just leave the class it was. 
+through the list to print the objects? I also didn't like the fact that
+extending Student through a separate Undergraduate class would increase the 
+coupling in my program. I could have explored these questions further,
+but putting the Student Year field in the Student class and
+only initializing it for undergraduate students had already given me a workable 
+solution, and I'd already spent a very long time working on this assignment. 
+Given this, I decided to just leave the class it was. 
 
 Additionally, per the assignment specifications and Francis Kogge's confirmation on Slack,
 I did not include any getter or setter methods in the Person, Student, Faculty, Course,
 and Section classes that were not used by the Registration System. 
 
 **Did you work on the extra credit problem?**
-I really wanted to work on the extra credit! However, I decided 3 hours before the assignment
-was due that I wanted to re-work a key part of my approach for printing the various
-collections in the Registration System. Up to that point, all of my methods for printing 
-the collections consisted of a series of get() method calls to get the information for the object's 
-fields, with String formatting added between each get method call. After seeing Professor Riley's
-statement that it's good practice to override the toString() methods for each class, 
-I decided to instead implement a toString() method for each class and then repeatedly
-call that method as I was printing the collections in the Registration System. 
-This took up the rest of my available time, so I was not able to work on the extra credit problem.
+I did! I found correctly identifying the multiplicty to be a bit challenging,
+but I think I worked it out. 
 
 **How much time did you spend on the assignment?**
 I spent approximately 25 hours working on this assignment.
@@ -77,10 +73,10 @@ Student, Course, and Section classes vs. by the Registration System class. This 
 really helped me to have a better understanding of inheritance. Also as with HW 2, the scope of 
 this assignment felt substantial to me, and this was a really significant time commitment. 
 The FAQ page for the Graduate Certificate in Computer Science Fundamentals states, "The Certificate
-program meets 2x/week, with 8-10 hours of work outside of class per week." Clearly, with me spending 
-25 hours outside of class on 1 assignment for 1 class, my time commitment to this program is greatly
-exceeding 8-10 hours. I'm committed to and really love this program, but I'm finding it almost 
-impossible to balance with my full time job. 
+program meets 2x/week, with 8-10 hours of work outside of class per week." Clearly, 
+with me spending 25 hours outside of class on 1 assignment for 1 class, my time commitment 
+to this program is greatly exceeding 8-10 hours. I'm committed to and really love this program, 
+but I'm finding it almost impossible to balance with my full time job. 
 
 
 

@@ -98,10 +98,8 @@ public class RegistrationSystem {
                             Quarter quarter, int year) 
                             throws DuplicatePersonException {
 
-        // Create student object.
-        Student newStudent = new Student(firstName, lastName);
-
-        // Check if student is already on the list. If they are,
+        // Check if input values for first name and last name match those
+        // belonging to student who is already on the list. If they do,
         // throw a duplicate person exception.
         // Assumption: A student with the same first name and last name is a duplicate student.
         for (int i = 0; i < studentList.size(); i++)
@@ -111,7 +109,8 @@ public class RegistrationSystem {
             }
 
         // After verifying that the student isn't already on the list,
-        // initialize remaining student object fields.
+        // create Student object and initialize fields.
+        Student newStudent = new Student(firstName, lastName);
         newStudent.setEmail(firstName, lastName);
         newStudent.setStudentType(type);
         newStudent.setProgram(program);
@@ -122,9 +121,6 @@ public class RegistrationSystem {
 
             // the Student Year field is never initialized for
             // graduate students, meaning the field is left null.
-            // If time allows, I'd like to determine a better
-            // way of handling this, because leaving the field
-            // null could cause issues.
         }
 
         //Add student to the students list
@@ -146,10 +142,8 @@ public class RegistrationSystem {
                             FacultyType type, Building bldg, int room, String email) 
                             throws DuplicatePersonException {
 
-        // Create Faculty object.
-        Faculty member = new Faculty(firstName, lastName);
-
-        // Check if faculty member is already on the list. If they are,
+        // Check if the input values for first name and last name match those
+        // belonging to a faculty member already on the list. If they do,
         // throw a duplicate person exception.
         // Assumption: A faculty member with the same first name and last name
         // is a duplicate faculty member.
@@ -161,7 +155,8 @@ public class RegistrationSystem {
         }
 
         // After verifying that the faculty member isn't already on the list,
-        // initialize remaining faculty object fields.
+        // create Faculty object and initialize fields.
+        Faculty member = new Faculty(firstName, lastName);
         member.setFacultyType(type);
         member.setOffice(bldg, room);
         member.setEmail(email);
@@ -204,11 +199,9 @@ public class RegistrationSystem {
     public void addCourse(SubjectCode code, int num, String name, 
                             int creditNum) throws DuplicateCourseException {
 
-        // Create Course object.
-        Course newCourse = new Course(code, num, name, creditNum);
-
-        // Check if course is already on the course list.
-        // If it is, throw a duplicate course exception.
+        // Check if the input values for subject code and course number
+        // match those belonging to a course already on the list.
+        // If they do, throw a duplicate course exception.
         // Assumption: A course with the same subject code and
         // course number as a course already on the list is a
         // duplicate course.
@@ -220,7 +213,8 @@ public class RegistrationSystem {
         }
 
         // After verifying that course is not a duplicate course,
-        // add course to course list.
+        // create new course object and add it to the course list.
+        Course newCourse = new Course(code, num, name, creditNum);
         courseList.add(newCourse);
     }
 
@@ -314,11 +308,9 @@ public class RegistrationSystem {
         // Get the faculty member at the specified index in the facultyList.
         Faculty instructor = facultyList.get(facultyIndex);
 
-        // Create new Section object.
-        Section section = new Section(course, sectionNum, instructor, quarter, year, cap, bldg, room);
-
-        // Check if section is already on the section list.
-        // If it is, throw a Duplicate Section Exception.
+        // Check if values for input parameters match values for a section
+        // that is already on the section list.
+        // If they do, throw a Duplicate Section Exception.
         // Assumption: If a section has the same course subject,
         // code, course number, and section number as a section
         // already on the list, it is a duplicate section.
@@ -331,7 +323,9 @@ public class RegistrationSystem {
         }
 
         // After verifying that section is not already on the section list,
-        // add section to the section list.
+        // create new Section object and add it to the section list.
+        // Create new Section object.
+        Section section = new Section(course, sectionNum, instructor, quarter, year, cap, bldg, room);
         sectionList.add(section);
     }
 

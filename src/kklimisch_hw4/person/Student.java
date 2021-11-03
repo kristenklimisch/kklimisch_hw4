@@ -76,7 +76,7 @@ public class Student extends Person {
     private StudentProgram program;
     private StudentYear studentYear;
     private String startTerm;
-    private String facultyAdvisor;
+    private Faculty advisor;
 
     /**
      * Constructor for Student object.
@@ -85,12 +85,7 @@ public class Student extends Person {
      * @param lastName  The last name of the student
      */
     public Student(String firstName, String lastName) {
-
         super(firstName, lastName);
-        // Initialize facultyAdvisor field to "not yet assigned" since students
-        // may not be assigned an advisor for a period of time when first
-        // enrolled as a student.
-        facultyAdvisor = "Not yet assigned";
     }
 
     /**
@@ -178,13 +173,9 @@ public class Student extends Person {
         // array list of active faculty members.
         int facultyIndex = rand.nextInt(faculty.size() - 1);
 
-        // Get the faculty member at the randomly-selected index.
-        Faculty advisor = faculty.get(facultyIndex);
-
-        // Get the faculty member's first and last names to create a String
-        // giving the faculty member's full name. Set the facultyAdvisor
-        // field to faculty member's full name.
-        facultyAdvisor = advisor.getFirstName() + " " + advisor.getLastName();
+        // Set the Student's advisor to be the faculty member at
+        // the randomly-assigned index.
+        advisor = faculty.get(facultyIndex);
     }
 
     /**
@@ -203,7 +194,7 @@ public class Student extends Person {
                                "Type=" + studentType + ", " +
                                "Program=" + program + ", " +
                                "Term=" + startTerm + ", " +
-                               "Advisor=" + facultyAdvisor;
+                               "Advisor=" + advisor.getFirstName() + " " + advisor.getLastName();
         if (studentType == StudentType.UNDERGRAD) {
             studentString += ", Year=" + studentYear;
         }
